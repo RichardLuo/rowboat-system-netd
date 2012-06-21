@@ -17,7 +17,6 @@ LOCAL_SRC_FILES:=                                      \
                   PppController.cpp                    \
                   ResolverController.cpp               \
                   SecondaryTableController.cpp         \
-                  SoftapController.cpp                 \
                   TetherController.cpp                 \
                   ThrottleController.cpp               \
                   oem_iptables_hook.cpp                \
@@ -41,6 +40,11 @@ LOCAL_CFLAGS := -Werror=format
 
 LOCAL_SHARED_LIBRARIES := libstlport libsysutils libcutils libnetutils \
                           libcrypto libhardware_legacy libmdnssd
+ifdef USES_TI_MAC80211
+  LOCAL_SRC_FILES += SoftapControllerTI.cpp
+else
+  LOCAL_SRC_FILES += SoftapController.cpp
+endif
 
 ifneq ($(BOARD_HOSTAPD_DRIVER),)
   LOCAL_CFLAGS += -DHAVE_HOSTAPD
