@@ -95,8 +95,8 @@ int NatController::setDefaults() {
     if (runCmd(IPTABLES_PATH, "-t nat -F natctrl_nat_POSTROUTING"))
         return -1;
 
-    runCmd(IP_PATH, "rule flush");
-    runCmd(IP_PATH, "-6 rule flush");
+//    runCmd(IP_PATH, "rule flush");
+//    runCmd(IP_PATH, "-6 rule flush");
     runCmd(IP_PATH, "rule add from all lookup default prio 32767");
     runCmd(IP_PATH, "rule add from all lookup main prio 32766");
     runCmd(IP_PATH, "-6 rule add from all lookup default prio 32767");
