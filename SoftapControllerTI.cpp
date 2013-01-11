@@ -232,19 +232,19 @@ int SoftapController::setSoftap(int argc, char *argv[]) {
     fputs(buf, fp2);
 
     // Update SSID
-    sprintf(buf, "ssid=%s\n",argv[4]);
+    sprintf(buf, "ssid=%s\n",argv[3]);
     fputs(buf, fp2);
 
     // Update security
-    if(strncmp(argv[5],"wpa2-psk",8) == 0) {
+    if(strncmp(argv[4],"wpa2-psk",8) == 0) {
         sprintf(buf, "wpa=2\nwpa_passphrase=%s\nwpa_key_mgmt=WPA-PSK\n"
-                  "wpa_pairwise=CCMP\nrsn_pairwise=CCMP\n", argv[6]);
+                  "wpa_pairwise=CCMP\nrsn_pairwise=CCMP\n", argv[5]);
         fputs(buf, fp2);
     }
 
-    if(strncmp(argv[5],"wpa-psk",7) == 0) {
+    if(strncmp(argv[4],"wpa-psk",7) == 0) {
         sprintf(buf, "wpa=1\nwpa_passphrase=%s\nwpa_key_mgmt=WPA-PSK\n"
-                  "wpa_pairwise=TKIP\nrsn_pairwise=TKIP\n", argv[6]);
+                  "wpa_pairwise=TKIP\nrsn_pairwise=TKIP\n", argv[5]);
         fputs(buf, fp2);
     }
 
